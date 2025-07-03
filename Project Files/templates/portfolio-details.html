@@ -1,0 +1,55 @@
+<!-- templates/predict.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waste Prediction - CleanTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .result-card {
+            margin-top: 60px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            min-width: 180px;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Top Nav -->
+    <nav class="navbar navbar-light bg-success shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="{{ url_for('home') }}">♻️ CleanTech Classifier</a>
+            <div>
+                <a class="btn btn-outline-light me-2" href="{{ url_for('upload') }}">Predict Again</a>
+                <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Result Section -->
+    <div class="container d-flex justify-content-center">
+        <div class="col-md-8 result-card text-center">
+            <h2 class="mb-4 text-success">🧠 AI Prediction Result</h2>
+
+            <img src="{{ user_image }}" alt="Uploaded Waste Image" class="img-fluid rounded mb-3" style="max-height: 280px;">
+
+            <div class="alert alert-success">
+                <h4>Category Detected: <strong>{{ prediction }}</strong></h4>
+                <p class="mb-0">Confidence Level: <strong>{{ confidence }}%</strong></p>
+            </div>
+
+            <div class="d-flex justify-content-center gap-4 mt-4">
+                <a href="{{ url_for('upload') }}" class="btn btn-success btn-custom">Upload Another</a>
+                <a href="{{ url_for('home') }}" class="btn btn-outline-secondary btn-custom">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
